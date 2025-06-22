@@ -60,9 +60,15 @@ header div {
     margin-block: 2.75rem;
 }
 
-@media (width >= 80rem) {
-    body, html {
+@media (width >=80rem) {
+
+    body,
+    html {
         overflow-y: hidden;
+    }
+
+    body {
+        background-size: cover;
     }
 
     header div {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
 
     <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
     <header>
         <div>
             <img src="assets/icons/logo.svg" alt="">
         </div>
     </header>
-    
+
     <main>
         <div class="title container">
             <strong>Online - gratuito</strong>
@@ -24,55 +26,88 @@
             <div class="functionality">
                 <div class="person-img"></div>
                 <strong>Como funciona o sorteador de números?</strong>
-                <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</p>
+                <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo
+                    especificado pelo usuário.</p>
             </div>
 
             <div class="interval">
                 <div class="person-img"></div>
                 <strong>Como funciona o sorteador de números?</strong>
-                <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</p>
+                <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo
+                    especificado pelo usuário.</p>
             </div>
         </div>
 
-        <form>
-            <fieldset class="container">
-                <legend>Quero sortear:</legend>
-                <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
-
-                <div class="draw-config">
+        <div>
+            <form>
+                <fieldset class="container">
+                    <legend>Quero sortear:</legend>
+                    <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É
+                        rápido e fácil!</p>
+                    <div class="draw-config">
+                        <div>
+                            <label for="numbers">Números</label>
+                            <div>
+                                <input type="number" name="numbers" id="numbers">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="of">De</label>
+                            <div>
+                                <input type="number" name="of" id="of">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="until">Até</label>
+                            <div>
+                                <input type="number" name="until" id="until">
+                            </div>
+                        </div>
+                    </div>
                     <div>
-                        <label for="numbers">Números</label>
-                        <input type="number" name="numbers" id="numbers">
+                        <div class="check-img">
+                            <img src="assets/icons/Ellipse 1 (1).svg" alt="">
+                        </div>
+                        <input type="checkbox" name="check" id="check">
+                        <span>Não repetir número</span>
                     </div>
-
-                    <div>
-                        <label for="of">De</label>
-                        <input type="number" name="of" id="of">
+                    <div class="draw-button">
+                        <button type="submit">Sortear
+                            <img src="assets/icons/arrow.svg" alt="">
+                        </button>
                     </div>
-
-                    <div>
-                        <label for="until">Até</label>
-                        <input type="number" name="until" id="until">
+                </fieldset>
+                
+                <fieldset class="result container">
+                    <h2>Resultado do sorteio</h2>
+                    <strong>1° Resultado</strong>
+    
+                    <ul role="list">
+                        <li>
+                            <div class="rotate-box">
+                                <span>23</span>
+                            </div>
+                        </li>
+                    </ul>
+    
+                    <div class="draw-button">
+                        <button class="draw-again" type="submit">
+                            Sortear novamente
+                            <span>
+                                <img src="assets/icons/play.svg" alt="">
+                            </span>
+                            <span>
+                                <img src="assets/icons/circle.svg" alt="">
+                            </span>
+                        </button>
                     </div>
-                </div>
+                </fieldset>
+            </form>
 
-                <div>
-                    <div class="check-img">
-                        <img src="assets/icons/Ellipse 1 (1).svg" alt="">
-                    </div>
-                    <input type="checkbox" name="check" id="check">
-                    <span>Não repetir número</span>
-                </div>
-
-                <div class="draw-button">
-                    <button type="submit">Sortear
-                        <img src="assets/icons/arrow.svg" alt="">
-                    </button>
-                </div>
-            </fieldset>
-        </form>
+        </div>
     </main>
 
     <script src="scripts.js"></script>
 </body>
+
 </html>
