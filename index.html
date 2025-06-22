@@ -34,6 +34,45 @@
             </div>
         </div>
 
+        <form>
+            <fieldset class="container">
+                <legend>Quero sortear:</legend>
+                <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!</p>
+
+                <div class="draw-config">
+                    <div>
+                        <label for="numbers">Números</label>
+                        <input type="number" name="numbers" id="numbers">
+                    </div>
+
+                    <div>
+                        <label for="of">De</label>
+                        <input type="number" name="of" id="of">
+                    </div>
+
+                    <div>
+                        <label for="until">Até</label>
+                        <input type="number" name="until" id="until">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="check-img">
+                        <img src="assets/icons/Ellipse 1 (1).svg" alt="">
+                    </div>
+                    <input type="checkbox" name="check" id="check">
+                    <span>Não repetir número</span>
+                </div>
+
+                <div class="draw-button">
+                    <button type="submit">Sortear
+                        <img src="assets/icons/arrow.svg" alt="">
+                    </button>
+                </div>
+            </fieldset>
+        </form>
     </main>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

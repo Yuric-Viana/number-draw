@@ -27,7 +27,7 @@ main {
     & div.questions {
         grid-area: C;
 
-        margin-top: 2.375rem;
+        margin-block: 2.375rem 5.625rem;
         width: 18.125rem;
         margin-inline: auto;
 
@@ -69,6 +69,128 @@ main {
             color: var(--content-secondary);
             font: var(--text-md);
         }
+
+        & .draw-config {
+            font: var(--label-md);
+            color: #C7C9CC;
+            text-align: center;
+
+            display: flex;
+            gap: .75rem;
+            margin-block: 2.5rem;
+
+            & div {
+                width: 5.375rem;
+
+                & input[type=number]::-webkit-inner-spin-button,
+                & input[type=number]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                & input {
+                    width: 5.375rem;
+                    height: 3.5rem;
+                    margin-top: .5rem;
+
+                    background-color: #111012;
+                    border: none;
+                    border-radius: .6rem;
+
+                    color: var(--content-primary);
+                    text-align: center;
+                    font: var(--display-sm);
+                }
+            }
+        }
+
+        & div:nth-child(4) {
+            color: var(--content-primary);
+            font: var(--text-sm);
+
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            margin-block: -1rem 2.5rem;
+
+            & span {
+                margin-left: .6rem;
+            }
+
+            & input {
+                position: absolute;
+                left: .6rem;
+
+                width: fit-content;
+                height: 100%;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            & div.check-img {
+                width: 1.875rem;
+                height: 1.25rem;
+
+                background: var(--content-tertiary);
+                border-radius: .8rem;
+
+                & img {
+                    position: absolute;
+                    top: -.1rem;
+                    left: 0;
+
+                    transition: left 300ms ease-in-out;
+                }
+            }
+
+            &:has(:checked) {
+                & div.check-img {
+                    background: linear-gradient(to right, var(--accent-pink) 0%, var(--accent-blue) 100%);
+
+                    & img {
+                        left: .6rem;
+                    }
+                }
+            }
+        }
+
+        & .draw-button {
+            background: transparent;
+
+            padding: 2px;
+            border-radius: .6rem;
+
+            & button {
+                all: unset;
+
+                background-color: var(--bg-tertiary);
+                color: var(--content-primary);
+                font: var(--label-md);
+
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                justify-content: center;
+
+                width: 100%;
+                padding-block: 1rem;
+                border-radius: .6rem;
+
+            }
+
+            &:hover {
+                background: var(--gradient-border) no-repeat;
+                background-size: 200%;
+                background-position: 0 50%;
+
+                animation: bg-gradient 800ms ease infinite;
+
+                & button img {
+                    animation: moveArrow 2s ease-in-out;
+                }
+            }
+        }
+
     }
 
 }
@@ -81,11 +203,13 @@ main {
 
         & div.title h1 {
             font: var(--display-lg);
+            width: max-content;
         }
 
         & div.questions {
             width: 22rem;
             margin-left: 10rem;
+            margin-top: -4rem;
         }
 
         & form fieldset {
@@ -93,7 +217,60 @@ main {
 
             & p {
                 font: var(--text-lg);
+                width: 30rem;
             }
         }
+    }
+}
+
+@keyframes moveArrow {
+    0% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(.2rem);
+    }
+
+    20% {
+        transform: translateX(.5rem);
+    }
+
+    30% {
+        transform: translateX(.7rem);
+    }
+
+    40% {
+        transform: translateX(.9rem);
+    }
+
+    50% {
+        transform: translateX(1rem);
+    }
+
+    60% {
+        transform: translateX(.7rem);
+    }
+
+    70% {
+        transform: translateX(.5rem);
+    }
+
+    80% {
+        transform: translateX(.3rem);
+    }
+
+    90% {
+        transform: translateX(.1rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes bg-gradient {
+    50% {
+        background-position: 100% 50%;
     }
 }

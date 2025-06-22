@@ -22,7 +22,7 @@
     --accent-green: #77C0AA;
     --accent-lime: #D1DC97;
     --accent-red: #E9A9B3;
-    --gradient-border: linear-gradient(#77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
+    --gradient-border: linear-gradient(45deg, #77C0AF 0%, #D1DC97 14.84%, #E9A9B3 32.15%, #D586E0 65.79%, #91A1FA 84.58%);
     --gradient-bg: linear-gradient(#D586E0 0%, #91A1FA 98.93%);
     --gradient-content: linear-gradient(#C7C9CC 0%, #3D3D3D 100%);
 
@@ -45,18 +45,13 @@
     --py: 2.75rem;
 }
 
-html,
-body {
-    height: 100%;
-    width: 100%;
-}
-
 html {
     background: linear-gradient(to top, #000000 100%, #000000 60%);
 }
 
 body {
     background: url(../assets/background.svg) bottom/contain no-repeat;
+    min-height: 100vh;
 }
 
 header div {
@@ -66,6 +61,10 @@ header div {
 }
 
 @media (width >= 80rem) {
+    body, html {
+        overflow-y: hidden;
+    }
+
     header div {
         margin-left: 8rem;
         margin-bottom: 5.625rem;
