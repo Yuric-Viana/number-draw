@@ -45,3 +45,29 @@
     --py: 2.75rem;
 }
 
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    background: linear-gradient(to top, #000000 100%, #000000 60%);
+}
+
+body {
+    background: url(../assets/background.svg) bottom/contain no-repeat;
+}
+
+header div {
+    width: max-content;
+    margin-inline: auto;
+    margin-block: 2.75rem;
+}
+
+@media (width >= 80rem) {
+    header div {
+        margin-left: 8rem;
+        margin-bottom: 5.625rem;
+    }
+}

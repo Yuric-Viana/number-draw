@@ -1,0 +1,99 @@
+main {
+    display: grid;
+    grid-template-areas:
+        'A'
+        'B'
+        'C';
+
+    & div.title {
+        grid-area: A;
+
+        & strong {
+            background: linear-gradient(to right, var(--content-secondary), var(--bg-gray));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+
+            font: var(--overline);
+
+        }
+
+        & h1 {
+            font: var(--display-md);
+            color: var(--content-primary);
+        }
+    }
+
+    & div.questions {
+        grid-area: C;
+
+        margin-top: 2.375rem;
+        width: 18.125rem;
+        margin-inline: auto;
+
+        & strong {
+            color: var(--content-brand);
+            font: var(--text-md);
+        }
+
+        & p {
+            color: var(--content-secondary);
+            font: var(--text-sm);
+        }
+
+        & div {
+            position: relative;
+
+            & div.person-img {
+                position: absolute;
+                background: url(../assets/icons/person.svg) no-repeat;
+                width: 2rem;
+                height: 2rem;
+                left: -1.5rem;
+            }
+        }
+    }
+
+    & form fieldset {
+        border: none;
+        grid-area: B;
+        margin-top: 2.625rem;
+
+        & legend {
+            font: var(--label-lg);
+            color: var(--content-primary);
+            white-space: nowrap;
+        }
+
+        & p {
+            color: var(--content-secondary);
+            font: var(--text-md);
+        }
+    }
+
+}
+
+@media (width >=80rem) {
+    main {
+        grid-template-areas:
+            'A B B'
+            'C B B';
+
+        & div.title h1 {
+            font: var(--display-lg);
+        }
+
+        & div.questions {
+            width: 22rem;
+            margin-left: 10rem;
+        }
+
+        & form fieldset {
+            margin-top: 0;
+
+            & p {
+                font: var(--text-lg);
+            }
+        }
+    }
+}
