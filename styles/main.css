@@ -414,7 +414,7 @@ main {
     }
 }
 
-@media (width >=80rem) {
+@media (width >= 64rem) {
     main {
         grid-template-areas:
             'A B B'
@@ -427,7 +427,6 @@ main {
 
         & div.questions {
             width: 22rem;
-            margin-left: 30%;
             margin-top: 2.375rem;
         }
 
@@ -442,13 +441,7 @@ main {
             }
 
             & .result {
-                width: 30.125rem;
-
-                & .draw-button {
-                    & span {
-                        margin-left: 6rem;
-                    }
-                }
+                width: 30.125rem;                
             }
         }
     }

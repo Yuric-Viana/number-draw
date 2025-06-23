@@ -48,19 +48,19 @@
                         <div>
                             <label for="numbers">Números</label>
                             <div>
-                                <input type="number" name="numbers" id="numbers">
+                                <input type="number" min="1" name="numbers" id="numbers" required>
                             </div>
                         </div>
                         <div>
                             <label for="of">De</label>
                             <div>
-                                <input type="number" name="of" id="of">
+                                <input type="number" min="1" name="of" id="of" required>
                             </div>
                         </div>
                         <div>
                             <label for="until">Até</label>
                             <div>
-                                <input type="number" name="until" id="until">
+                                <input type="number" min="1" name="until" id="until" required>
                             </div>
                         </div>
                     </div>
@@ -83,15 +83,10 @@
                     <strong>1° Resultado</strong>
 
                     <ul role="list">
-                        <li>
-                            <div class="rotate-box">
-                                <span>23</span>
-                            </div>
-                        </li>
                     </ul>
 
                     <div class="draw-button">
-                        <button class="draw-again" type="submit">
+                        <button class="draw-again" name="draw-again" value="draw-again" type="submit">
                             <span class="content">
                                 Sortear novamente
                                 <span>

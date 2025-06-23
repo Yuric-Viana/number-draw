@@ -1,4 +1,5 @@
 const form = document.querySelector('form')
+let cont = 1
 
 // Pegando os elementos do sorteador
 const insertNumbers = document.querySelector('.insert-numbers')
@@ -43,12 +44,7 @@ function numbersNoRepeat(amount, min, max) {
     return result
 }
 
-// Animação do botão de sortear somente após a outra animação terminar
-rotateBox.addEventListener('animationend', () => {
-    resultDraw.style.visibility = 'visible'
-    resultDraw.style.animation = 'buttonUp 4s both'
-})
-
+// Captura o submit do usuário
 form.addEventListener('submit', (event) => {
     event.preventDefault()
 
@@ -56,9 +52,10 @@ form.addEventListener('submit', (event) => {
     const actionButton = button.value
 
     if (actionButton === 'draw') {
-        insertNumbers.style.display = 'none'
-        result.style.display = 'block'
-        drawNumbersNoRepeat()
+        drawNumbers()
+
+    } else if (actionButton === 'draw-again') {
+        drawAgain()
     }
 })
 
@@ -67,43 +64,147 @@ function drawNumbersNoRepeat() {
     let draw = []
 
     if (check.checked) {
-        const valueQuantity = parseInt(quantity.value, 10)
-        const valueOf = parseInt(of.value, 10)
-        const valueUntil = parseInt(until.value, 10)
+        const valueQuantity = parseInt(quantity.value.match(/^(?!-)\d+(\.\d+)?$/))
+        const valueOf = parseInt(of.value.match(/^(?!-)\d+(\.\d+)?$/))
+        const valueUntil = parseInt(until.value.match(/^(?!-)\d+(\.\d+)?$/))
 
-        draw = numbersNoRepeat(valueQuantity, valueOf, valueUntil)        
+        const isValid = valueUntil - valueOf
+
+        if (valueQuantity > isValid || valueOf > valueUntil) {
+
+            alert('Verifique os valores inseridos:\n- A quantidade de números não pode ser maior que o intervalo disponível.\n- O número inicial deve ser menor que o número final.\- O número inicial não pode ser o mesmo que o número final');
+
+            return draw
+
+        } else {
+            draw = numbersNoRepeat(valueQuantity, valueOf, valueUntil)
+        }
     }
-    
-    return createList(draw)
+
+    return draw
 }
 
 // Retorna os números sorteados podendo haver repetidos
 function drawNumbersRepeat() {
     let draw = []
 
-    if(!check.checked) {
-        const valueQuantity = parseInt(quantity.value, 10)
-        const valueOf = parseInt(of.value, 10)
-        const valueUntil = parseInt(until.value, 10)
+    if (!check.checked) {
+        const valueQuantity = parseInt(quantity.value.match(/^(?!-)\d+(\.\d+)?$/))
+        const valueOf = parseInt(of.value.match(/^(?!-)\d+(\.\d+)?$/))
+        const valueUntil = parseInt(until.value.match(/^(?!-)\d+(\.\d+)?$/))
 
-        draw = numbersRepeat(valueQuantity, valueOf, valueUntil)
+        const isValid = valueUntil - valueOf
+
+        if (valueQuantity > isValid || valueOf > valueUntil) {
+
+            alert('Verifique os valores inseridos:\n- A quantidade de números não pode ser maior que o intervalo disponível.\n- O número inicial deve ser menor que o número final.\n- O número inicial não pode ser o mesmo que o número final');
+
+            return draw
+
+        } else {
+            draw = numbersRepeat(valueQuantity, valueOf, valueUntil)
+        }
+
     }
 
     return draw
 }
 
-// Função para criar os números sorteados visualmente
-function createList(value) {
-    const li = document.createElement('li')
+// Função para criar a estrutura dos números sorteados
+function createList(value) { 
 
-    const boxRotate = document.createElement('div')
-    boxRotate.classList.add('rotate-box')
+    return value.map(values => {
+        const li = document.createElement('li')
 
-    const itemDraw = document.createElement('span')
-    itemDraw.textContent = value
+        const boxRotate = document.createElement('div')
+        boxRotate.classList.add('rotate-box')
 
-    boxRotate.append(itemDraw)
-    li.append(boxRotate)
+        const itemDraw = document.createElement('span')
+        itemDraw.textContent = values
 
-    return li
-} 
+        boxRotate.append(itemDraw)
+        li.append(boxRotate)
+
+        return li
+    })
+}
+
+// Função para que cada os li entrem um por vez
+function appendWithDelay(items, container, delay = 5000) {
+    items.forEach((item, index) => {
+        setTimeout(() => {
+            container.appendChild(item)
+
+            if (index === items.length - 1) {
+                const boxRotate = item.querySelector('.rotate-box')
+
+                resultDraw.style.visibility = 'hidden'
+                resultDraw.style.animation = 'none'
+
+                boxRotate.addEventListener('animationend', () => {
+                    resultDraw.style.visibility = 'visible'
+                    resultDraw.style.animation = 'buttonUp 4s both'
+                })
+            }
+
+        }, index * delay)
+    })
+}
+
+// Função para sortear mais uma vez
+function drawAgain() {
+    const quantityDraw = document.querySelector('.result strong')
+
+    cont++
+    quantityDraw.textContent = `${cont}° Resultado`
+    resultDraw.style.visibility = 'hidden'
+
+    if (check.checked) {
+        resultList.innerHTML = ''
+        drawNumbers()
+    } else {
+        resultList.innerHTML = ''
+        drawNumbers()
+    }
+}
+
+// Função para criar os elementos visualmente
+function drawNumbers() {
+    let items = []
+
+    if (check.checked) {
+        items = drawNumbersNoRepeat()
+
+        if (items.length === 0) {
+            quantity.value = ''
+            of.value = ''
+            until.value = ''
+
+            return
+        } else {
+            const itemsNoRepeat = createList(items)
+
+            insertNumbers.style.display = 'none'
+            result.style.display = 'block'
+            appendWithDelay(itemsNoRepeat, resultList)
+        }
+
+    } else {
+        items = drawNumbersRepeat()
+
+        if (items.length === 0) {
+            quantity.value = ''
+            of.value = ''
+            until.value = ''
+
+            return
+        } else {
+            const itemsRepeat = createList(items)
+
+            insertNumbers.style.display = 'none'
+            result.style.display = 'block'
+            appendWithDelay(itemsRepeat, resultList)
+        }
+
+    }
+}
