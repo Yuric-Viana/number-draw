@@ -217,7 +217,6 @@ main {
                         font: bold 3rem/150% var(--ff-mono);
 
                         & div.rotate-box {
-                            padding: .2rem .8rem;
                             border-radius: .6rem;
                             width: 5.625rem;
                             height: 5rem;
