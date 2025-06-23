@@ -40,7 +40,7 @@
 
         <div>
             <form>
-                <fieldset class="container">
+                <fieldset class="insert-numbers container">
                     <legend>Quero sortear:</legend>
                     <p>defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É
                         rápido e fácil!</p>
@@ -72,16 +72,16 @@
                         <span>Não repetir número</span>
                     </div>
                     <div class="draw-button">
-                        <button type="submit">Sortear
+                        <button type="submit" name="draw" value="draw">Sortear
                             <img src="assets/icons/arrow.svg" alt="">
                         </button>
                     </div>
                 </fieldset>
-                
+
                 <fieldset class="result container">
                     <h2>Resultado do sorteio</h2>
                     <strong>1° Resultado</strong>
-    
+
                     <ul role="list">
                         <li>
                             <div class="rotate-box">
@@ -89,15 +89,17 @@
                             </div>
                         </li>
                     </ul>
-    
+
                     <div class="draw-button">
                         <button class="draw-again" type="submit">
-                            Sortear novamente
-                            <span>
-                                <img src="assets/icons/play.svg" alt="">
-                            </span>
-                            <span>
-                                <img src="assets/icons/circle.svg" alt="">
+                            <span class="content">
+                                Sortear novamente
+                                <span>
+                                    <img src="assets/icons/play.svg" alt="">
+                                </span>
+                                <span>
+                                    <img src="assets/icons/circle.svg" alt="">
+                                </span>
                             </span>
                         </button>
                     </div>
