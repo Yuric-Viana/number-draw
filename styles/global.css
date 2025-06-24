@@ -64,7 +64,7 @@ header div {
 
     body,
     html {
-        overflow-y: hidden;
+        margin-bottom: 4rem;
     }
 
     body {
